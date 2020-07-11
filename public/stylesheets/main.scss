@@ -1,0 +1,16 @@
+// Variables
+$primary: #1a73e8;
+$secondary: #4c4c4c;
+$body-bg: #f2f2f2;
+$light: #ffffff;
+
+$navbar-padding-y: 1rem;
+
+$navbar-light-color: $secondary;
+$navbar-light-hover-color: $primary;
+$navbar-light-active-color: $primary;
+$navbar-light-brand-color: $secondary;
+$navbar-light-brand-hover-color: $primary;
+
+@import 'style';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

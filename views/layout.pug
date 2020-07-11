@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    if title != null
+      title #{title} - Speech 2 Sign
+    else
+      title Speech 2 Sign
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+  body
+    nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light
+      .container-md
+        a.navbar-brand(href='/') Speech 2 Sign
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarSupportedContent
+          ul.navbar-nav.ml-auto.mb-2.mb-lg-0
+            a.nav-link(href='/') Home
+            a.nav-link(href='/about') About
+            a.nav-link(href='/contact') Contact
+    block content
+    include scripts

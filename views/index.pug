@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container.h-100.d-flex
+    .card#content-box
+      if videoURL !== null
+        video#video-box.card-img-top.embed-responsive.embed-responsive-16by9(autoplay='autoplay', controls, disablePictureInPicture, controlsList='nodownload')
+          source(src=videoURL, type='video/mp4')
+      else
+        img(src='https://via.placeholder.com/1280x720', alt='')
+      .card-body
+        .row
+          .col-sm.d-flex
+            h5.text-secondary.text-center#center-log Click the microphone icon and speak
+          .col-sm.d-flex
+            a.text-center#center-voice(href='#')
+              .circle-icon.d-flex
+                img.text-light#center-svg(src='images/mic.svg')
+                audio#voiceIndicator
+                  source(src='/resources/Clink.ogg', type='audio/ogg')
+  script(src='/javascripts/script.js')
