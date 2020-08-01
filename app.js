@@ -26,7 +26,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: 'anyrandomstring',  // Change this later
+    secret: process.env.COOKIE_SECRET,  // Change this later
     cookie: {
       maxAge: 1000 * 60 * 30,
       sameSite: true,
