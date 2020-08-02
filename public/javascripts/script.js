@@ -1,5 +1,21 @@
 'use strict'
 
+var voiceActive = false;
+var voiceButton = document.querySelector('#voiceButton');
+var voicePrompt = document.querySelector('#voicePrompt');
+var voiceIcon = document.querySelector('#voiceIcon');
+var voiceIndicator = document.querySelector('#voiceIndicator');
+
+voiceButton.addEventListener('click', function() {
+    if(!voiceActive) { // Toggle button on
+        startRecording();
+        voiceActive = true;
+    } else { // Toggle button off
+        stopRecording();
+        voiceActive = false;
+    }
+});
+
 var gumStream;
 var recorder;
 var input;
@@ -10,6 +26,9 @@ var audioContext; // new audio context to help us record
 
 function startRecording() {
     console.log('startRecording() called');
+
+    voiceIcon.setAttribute('src', 'images/waveform.svg');
+    voicePrompt.innerHTML = 'Listening...';
 
     var constraints = { audio: true, video: false }
 
@@ -44,10 +63,12 @@ function startRecording() {
 
         recorder.onComplete = function(recorder, blob) {
             console.log('Encoding complete.');
+            
+            uploadToServer(blob);
         }
 
         recorder.setOptions({
-            timeLimit: 60, // recording time limit (seconds)
+            timeLimit: 5, // recording time limit (seconds)
             encodeAfterRecord: false // process encoding on recording background
         });
 
@@ -70,41 +91,23 @@ function stopRecording() {
     recorder.finishRecording();
 
     console.log('Recording stopped.');
+
+    voiceIcon.setAttribute('src', 'images/mic.svg');
+    voicePrompt.innerHTML = 'Click the microphone icon and speak';
 }
 
-var voiceActive = false;
-var voiceButton = document.querySelector('#voiceButton');
-var voicePrompt = document.querySelector('#voicePrompt');
-var voiceIcon = document.querySelector('#voiceIcon');
-var voiceIndicator = document.querySelector('#voiceIndicator');
+function uploadToServer(blob) {
+    var formData = new FormData();
+    formData.append('audio-file', blob);
 
-voiceButton.addEventListener('click', function() {
-    if(!voiceActive) { // Toggle button on
-
-        voiceIcon.setAttribute('src', 'images/waveform.svg');
-        voicePrompt.innerHTML = 'Listening...';
-        playChime();
-        startRecording();
-
-        voiceActive = true;
-    } else { // Toggle button off
-        console.log('Turned off');
-
-        voiceIcon.setAttribute('src', 'images/mic.svg');
-        voicePrompt.innerHTML = 'Click the microphone icon and speak';
-        stopChime()
-        stopRecording();
-
-        voiceActive = false;
-    }
-});
-
-function playChime() {
-    voiceIndicator.volume = 0.3;
-    voiceIndicator.play();
-}
-
-function stopChime() {
-    voiceIndicator.pause();
-    voiceIndicator.currentTime = 0;
+    $.ajax({
+        method: 'POST',
+        url: '/',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log(data);
+        }
+    });
 }

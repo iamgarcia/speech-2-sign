@@ -1,14 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
-var videoURL = null;
+var randomString = require('randomstring');
 
-// /* GET index page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { 
-//     videoURL: 'https://storage.googleapis.com/s2s-sign-videos/hello.mp4' 
-//   });
-// });
+/**
+ *  Multer stuff
+ */
+var multer = require('multer');
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'public/uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, randomString.generate({
+      length: 10,
+      charset: 'alphanumeric'
+    }) + '.wav');
+  }
+});
+var upload = multer({ storage: storage });
+
+var videoURL = null;
 
 /* GET index page. */
 router.get('/', function(req, res, next) {
@@ -18,8 +30,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST index page. */
-router.post('/', function(req, res) {
-
+router.post('/', upload.single('audio-file'), function(req, res) {
+  
 });
 
 module.exports = router;
