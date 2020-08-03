@@ -63,9 +63,11 @@ function startRecording() {
 
         recorder.onComplete = function(recorder, blob) {
             console.log('Encoding complete.');
+
+            voiceActive = false;
             voiceIcon.setAttribute('src', 'images/mic.svg');
             voicePrompt.innerHTML = 'Click the microphone icon and say a word';
-            
+
             uploadToServer(blob);
         }
 
@@ -79,7 +81,7 @@ function startRecording() {
 
         console.log('Recording started.');
     }).catch(function(err) {
-        console.log('getUserMedia() failure');
+        console.log('getUserMedia() error: ' + err);
     });
 }
 
@@ -110,10 +112,6 @@ function uploadToServer(blob) {
 
             document.querySelector('#video-box > source').src = result.videoURL;
             document.querySelector('#video-box').load();
-
-            // var $video = $('#video-box');
-            // videoSrc = $('source', $video).attr('src', result.videoURL);
-            // $video[0].load();
         }
     });
 }

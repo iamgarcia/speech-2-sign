@@ -84,6 +84,7 @@ router.post('/', upload.single('audio-file'), function(req, res) {
   // transcode the .wav file
   sox({
     soxPath: 'C:\\Program Files (x86)\\sox-14-4-2\\sox.exe',
+    input: { volume: 0.8 },
     inputFile: req.file.path,
     output: {
       bits: 16,
@@ -109,10 +110,8 @@ router.post('/', upload.single('audio-file'), function(req, res) {
 
         // check if res is empty
         if(text === '') {
-          console.log('Response is empty');
+          res.json({ videoURL: '', textDisplay: 'Error: input not detected' });
         } else {
-          console.log(text);
-
           // send response and video url to front-end
           if(wordExists(text)) {
             url = createVideoURL(text);
