@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       setActiveNavLink(1);
       break;
 
-    case "/contact":
+    case "/team":
       setActiveNavLink(2);
       break;
   }

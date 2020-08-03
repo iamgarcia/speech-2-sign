@@ -2,8 +2,8 @@ var express = require("express");
 var router = express.Router();
 
 /* GET contact page. */
-router.get("/", function(req, res, next) {
-  res.render("contact", { title: "Contact" });
+router.get('/', function(req, res, next) {
+  res.render('team');
 });
 
 module.exports = router;

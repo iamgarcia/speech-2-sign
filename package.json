@@ -9,7 +9,6 @@
   "dependencies": {
     "@google-cloud/speech": "^4.1.1",
     "bootstrap": "^5.0.0-alpha1",
-    "bootstrap-icons": "^1.0.0-alpha5",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",

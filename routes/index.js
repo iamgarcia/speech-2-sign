@@ -70,15 +70,9 @@ async function speechToText(req) {
   return transcription;
 }
 
-var videoURL = null;
-var textDisplay = null;
-
 /* GET index page. */
 router.get('/', function(req, res) {
-  res.render('index', { 
-    videoURL,
-    textDisplay
-  });
+  res.render('index');
 });
 
 var text;
@@ -122,8 +116,9 @@ router.post('/', upload.single('audio-file'), function(req, res) {
           // send response and video url to front-end
           if(wordExists(text)) {
             url = createVideoURL(text);
+            res.json({ videoURL: url, textDisplay: text });
           } else {
-            url = null;
+            res.json({ videoURL: '', textDisplay: text });
           }
         }
       });

@@ -66,7 +66,7 @@ h5, .h5 {
 #header {
   background-color: #1a73e8; }
 
-.card-body {
+.card-content {
   padding: 2rem 2rem !important; }
 
 .application-card {
@@ -92,6 +92,20 @@ h5, .h5 {
 .card-text {
   color: #5f6368;
   margin-top: 1rem; }
+
+.team-card {
+  border-radius: 1rem !important; }
+
+.team-content {
+  padding: 2rem 2rem !important; }
+
+.team-pic {
+  width: 10rem;
+  height: 10rem; }
+
+.center-team-pic {
+  display: flex;
+  align-items: center; }
 
 /*!
  * Bootstrap v5.0.0-alpha1 (https://getbootstrap.com/)

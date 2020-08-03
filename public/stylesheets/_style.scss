@@ -89,7 +89,7 @@ h5 {
     background-color: $primary;
 }
 
-.card-body {
+.card-content {
     padding: 2rem 2rem!important;
 }
 
@@ -122,4 +122,23 @@ h5 {
 .card-text {
     color: #5f6368;
     margin-top: 1rem;
+}
+
+// Contact
+.team-card {
+    border-radius: 1rem!important;
+}
+
+.team-content {
+    padding: 2rem 2rem!important;
+}
+
+.team-pic {
+    width: 10rem;
+    height: 10rem;
+}
+
+.center-team-pic {
+    display: flex;
+    align-items: center;
 }
