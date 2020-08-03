@@ -13,12 +13,12 @@ block content
         .col
           .card#content-box
             if videoURL !== null
-              video#video-box.card-img-top.embed-responsive.embed-responsive-16by9(autoplay='autoplay', controls, disablePictureInPicture, controlsList='nodownload')
+              video#video-box.card-img-top.embed-responsive.embed-responsive-16by9(controls, disablePictureInPicture, controlsList='nodownload')
                 source(src=videoURL, type='video/mp4')
             .card-body
               .row
                 .col-sm.d-flex.center-text
-                  h5.text-secondary.text-center.center-log#voicePrompt Click the microphone icon and speak
+                  h5.text-secondary.text-center.center-log#voicePrompt Click the microphone icon and say a word
                 .col-sm.d-flex
                   form(action='/', method='POST', enctype='multipart/form-data')
                     input(type='hidden', name='audio-file')

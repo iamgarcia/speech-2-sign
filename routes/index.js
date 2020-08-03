@@ -45,15 +45,17 @@ async function speechToText(req) {
   const file = fs.readFileSync(fileName);
   const audioBytes = file.toString('base64');
 
-  // the audio file's encoding, sample rate in hertz, and BCP-47 language code
   const audio = {
     content: audioBytes,
   };
+
+  // the audio file's encoding, sample rate in hertz, and BCP-47 language code
   const config = {
     encoding: 'LINEAR16',
     sampleRateHertz: 16000,
     languageCode: 'en-US',
   };
+
   const request = {
     audio: audio,
     config: config,
@@ -72,12 +74,15 @@ var videoURL = null;
 var textDisplay = null;
 
 /* GET index page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { 
     videoURL,
     textDisplay
   });
 });
+
+var text;
+var url;
 
 /* POST index page. */
 router.post('/', upload.single('audio-file'), function(req, res) {
@@ -101,24 +106,24 @@ router.post('/', upload.single('audio-file'), function(req, res) {
       fs.unlinkSync(req.file.path);
 
       // transcribe the new .wav file
-      speechToText(outputFilePath).then(function(res) {
+      speechToText(outputFilePath).then(function(transcribe) {
 
         // delete the new .wav file
         fs.unlinkSync(outputFilePath);
 
-        var text = res.toLowerCase();
+        text = transcribe.toLowerCase();
 
         // check if res is empty
         if(text === '') {
           console.log('Response is empty');
         } else {
+          console.log(text);
+
           // send response and video url to front-end
-          console.log(wordExists(text));
-          if(wordExists(res)) {
-            var url = createVideoURL(text);
-            console.log(text);
+          if(wordExists(text)) {
+            url = createVideoURL(text);
           } else {
-            // send response to front-end
+            url = null;
           }
         }
       });

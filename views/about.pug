@@ -1,5 +1,52 @@
 extends layout
 
 block content
-  .container.h-100.d-flex
-    h1 About content
+  .position-relative.overflow-hidden.p-3.p-md-5.text-center#header
+    .container
+      .col-md-6.p-lg-5.mx-auto.my-4
+        h1.display-4.text-white Speech 2 Sign
+        p.lead.text-white Speech 2 Sign (S2S) is a web application that takes a word spoken 
+          | in English, then it displays a stick figure signing the word in 
+          | American Sign Language (ASL).
+  .container.my-4
+    .row
+      h2.text-center Practical Applications
+      .col-lg.my-2
+        .card.application-card.h-100
+          .card-body
+            .application-content
+              svg.bi.bi-people(width='2rem', height='2rem', viewBox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                path(fill-rule='evenodd', d='M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002.002zM7.022 13h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zm7.973.056v-.002.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z')
+              h5.card-title.application-headline Conversational Scenario
+            p.card-text 
+              | A scenario in which English speakers and ASL speakers would like 
+              | to communicate with each other but the language barrier cannot be overcome
+              | without the facilitaiton of communication. With S2S, the English speaker's
+              | words can be effectively articulated to the ASL speaker.
+      .col-lg.my-2
+        .card.application-card.h-100
+          .card-body
+            .application-content
+              svg.bi.bi-card-heading(width='2rem', height='2rem', viewBox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                path(fill-rule='evenodd', d='M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z')
+                path(fill-rule='evenodd', d='M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z')
+                path(d='M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z')
+              h5.card-title.application-headline Flashcard Scenario
+            p.card-text
+              | A scenario in which an ASL learner would like to practice their  
+              | knowledge of gestures. S2S allows the use the system as digital flashcards
+              | by searching up gestures using spoken English and getting visual examples
+              | of them.
+      .col-lg.my-2
+        .card.application-card.h-100
+          .card-body
+            .application-content
+              svg.bi.bi-chat-square-text(width='2rem', height='2rem', viewBox='0 0 16 16', fill='currentColor', xmlns='http://www.w3.org/2000/svg')
+                path(fill-rule='evenodd', d='M14 1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5a2 2 0 0 1 1.6.8L8 14.333 9.9 11.8a2 2 0 0 1 1.6-.8H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z')
+                path(fill-rule='evenodd', d='M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z')
+              h5.card-title.application-headline Presentation Scenario
+            p.card-text
+              | A scenario in which there is a need of inclusion of ASL users in a larger 
+              | group. An example of this is during a spoken presentation in which it
+              | would be beneficial to have the speaker's words interpreted in ASL
+              | throughout the talk.

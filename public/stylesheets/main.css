@@ -4,7 +4,7 @@ html, body {
 body {
   padding-top: 72px; }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+h5, .h5 {
   margin: 0 !important; }
 
 .nav-link {
@@ -62,6 +62,36 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   width: 4rem;
   height: 4rem;
   border-radius: 50%; }
+
+#header {
+  background-color: #1a73e8; }
+
+.card-body {
+  padding: 2rem 2rem !important; }
+
+.application-card {
+  border-radius: 1rem !important; }
+
+.application-content {
+  display: flex;
+  align-items: center; }
+
+.application-headline {
+  color: #202124;
+  margin-left: 1rem !important; }
+
+.bi-people {
+  color: #202124; }
+
+.bi-card-heading {
+  color: #202124; }
+
+.bi-chat-square-text {
+  color: #202124; }
+
+.card-text {
+  color: #5f6368;
+  margin-top: 1rem; }
 
 /*!
  * Bootstrap v5.0.0-alpha1 (https://getbootstrap.com/)
