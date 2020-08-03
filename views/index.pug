@@ -3,12 +3,12 @@ extends layout
 block content
   .container.center-container.h-100
     .container
-      if videoURL !== null
+      if textDisplay !== null
         .row#response-row
           .col
             .card#response-box
               .card-body.center-text
-                  h2 hello
+                  h2 #{textDisplay}
       .row#content-row
         .col
           .card#content-box

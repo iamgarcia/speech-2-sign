@@ -63,6 +63,8 @@ function startRecording() {
 
         recorder.onComplete = function(recorder, blob) {
             console.log('Encoding complete.');
+            voiceIcon.setAttribute('src', 'images/mic.svg');
+            voicePrompt.innerHTML = 'Click the microphone icon and speak';
             
             uploadToServer(blob);
         }
@@ -91,9 +93,6 @@ function stopRecording() {
     recorder.finishRecording();
 
     console.log('Recording stopped.');
-
-    voiceIcon.setAttribute('src', 'images/mic.svg');
-    voicePrompt.innerHTML = 'Click the microphone icon and speak';
 }
 
 function uploadToServer(blob) {
@@ -105,9 +104,6 @@ function uploadToServer(blob) {
         url: '/',
         data: formData,
         processData: false,
-        contentType: false,
-        success: function(data) {
-            console.log(data);
-        }
+        contentType: false
     });
 }
