@@ -3,6 +3,7 @@ var router = express.Router();
 var randomString = require('randomstring');
 var speech = require('@google-cloud/speech');
 var fs = require('fs');
+var soxPath = require('sox-bin');
 var sox = require('sox.js');
 var json_data = require('../public/classes.json');
 
@@ -83,7 +84,8 @@ router.post('/', upload.single('audio-file'), function(req, res) {
   
   // transcode the .wav file
   sox({
-    soxPath: 'C:\\Program Files (x86)\\sox-14-4-2\\sox.exe',
+    // soxPath: 'C:\\Program Files (x86)\\sox-14-4-2\\sox.exe',
+    soxPath: soxPath,
     input: { volume: 0.8 },
     inputFile: req.file.path,
     output: {
